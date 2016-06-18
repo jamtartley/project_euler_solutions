@@ -6,7 +6,7 @@ Solutions written in Python
 
 ###Completed
 
-1
-2
-3
+*1
+*2
+*3
 
