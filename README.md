@@ -1,2 +1,12 @@
-# project_euler_solutions
-Solutions to the set of Project Euler problems
+#Project Euler solutions
+
+Project Euler problems can be found [here](https://projecteuler.net/archives)
+
+Solutions written in Python
+
+###Completed
+
+1
+2
+3
+
