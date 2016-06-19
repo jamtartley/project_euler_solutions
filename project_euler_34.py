@@ -10,6 +10,9 @@ Note: as 1! = 1 and 2! = 2 are not sums they are not included.
 import math
 
 def isSumFactorial(number):
+    """
+    Checks if the factorials of each digit add upto the number itself
+    """
     decomposition = [int(x) for x in str(number)]
     factorialTotal = 0
 
