@@ -15,17 +15,8 @@ def splitNumberIntoList(number):
 def isPalindrome(number):
     """
     Checks to see if a number is a palindrome.
-    Works by splitting number into a list of its digits and checking
-    xth position == (length - xth position)
-    for every x upto the length of the list
     """
-    listDigits = splitNumberIntoList(number)
-
-    for x in range(len(listDigits)):
-        if listDigits[x] != listDigits[len(listDigits) - 1 - x]:
-            return False
-    
-    return True
+    return str(number) == str(number)[::-1]
 
 def getSetAllPalindromeProducts(start,limit):
     """
