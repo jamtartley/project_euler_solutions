@@ -15,7 +15,6 @@ d8d9d10=289 is divisible by 17
 Find the sum of all 0 to 9 pandigital numbers with this property.
 """
 import itertools
-from time import time
 
 def getAllPandigitals():
     """
@@ -47,7 +46,5 @@ def main():
 
     print(total)
 
-start = time()
 main()
-print(time() - start)
 
