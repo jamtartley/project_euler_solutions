@@ -19,60 +19,27 @@ We can see that 28 is the first triangle number to have over five divisors.
 What is the value of the first triangle number to have over five hundred divisors?
 """
 
-import itertools
-import operator
 import functools
 
-def isPrime(number):
+def getFactors(number):
     """
-    Check if the given number is prime
+    Creates a list of all factors of the given number
     """
-    for x in range(2, number):
-        if (number % x == 0):
-            return False
+    return set(functools.reduce(list.__add__, 
+                ([i, number//i] for i in range(1, int(number**0.5) + 1) if number % i == 0)))
 
-    return True
+def getTriangle(index):
+    """
+    Get the index-th position triangle number
+    """
+    return sum(range(index + 1))
 
-def getNextPrime(prev):
-    next = prev + 1
-
-    while(not isPrime(next)):
-        next += 1
-
-    return next
-
-def getPrimeDivisors(number):
-    divisors = []
-    currentDivisor = 2
-
-    while(number != 1):
-        if (number % currentDivisor == 0):
-            number /= currentDivisor
-            divisors.append(currentDivisor)
-        else:
-            currentDivisor = getNextPrime(currentDivisor)
-
-    return divisors
-
-def getPrimeCounts(divisorList):
-    return [(factor, divisorList.count(factor)) for factor in set(divisorList)]
-
-def getPrimeFactorExpValues(factorisedList):
-    return [[(factor ** n) for n in range(exp + 1)] for (factor, exp) in factorisedList]
-
-def getAllDivisors(postExpList):
-    divisors = []
-    for element in itertools.product(*postExpList):
-        divisors.append(element)
-
-    return sorted(set([functools.reduce(operator.mul, subl) for subl in divisors]))
-
-def getTriangle(number):
-    return sum(int(x) for x in range(number))
-
-triangleIndex = 5
-
-while(len(getAllDivisors(getPrimeFactorExpValues(getPrimeCounts(getPrimeDivisors(getTriangle(triangleIndex)))))) < 500):
-    triangleIndex += 1
-
-print(getTriangle(triangleIndex))
+def main():
+    x = 1
+    
+    while len(getFactors(getTriangle(x))) < 500:
+        x += 1
+        
+    print(getTriangle(x))
+    
+main()
