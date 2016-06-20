@@ -5,7 +5,7 @@ A googol (10100) is a massive number: one followed by one-hundred zeros; 100100 
 
 Considering natural numbers of the form, ab, where a, b < 100, what is the maximum digital sum?
 """
-from time import time
+
 def getDigitalSum(number):
     """
     Gets the sum total of all digits of a given number
@@ -25,7 +25,5 @@ def main():
 
     print(highest)
 
-start = time()
 main()
-print(time() - start)
     
