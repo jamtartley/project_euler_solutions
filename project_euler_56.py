@@ -10,10 +10,7 @@ def getDigitalSum(number):
     """
     Gets the sum total of all digits of a given number
     """
-    total = 0
-    for digit in str(number):
-        total += int(digit)
-    return total
+    return sum([int(digit) for digit in str(number)])
 
 def main():
     MAX_VALUE = 100
