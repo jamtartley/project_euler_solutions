@@ -16,6 +16,7 @@ Solutions written in Python
 * 8
 * 10
 * 12
+* 18
 * 24
 * 29
 * 30
@@ -33,3 +34,4 @@ Solutions written in Python
 * 53
 * 55
 * 56
+* 67
