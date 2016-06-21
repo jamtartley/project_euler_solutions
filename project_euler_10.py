@@ -17,16 +17,19 @@ def isPrime(number):
 
     return True
 
-def getPrimesBelowLimit(limit):
+def getPrimesUpto(limit):
     """
-    Get all primes below limit
+    Uses Sieve of Eratosthenes
     """
-    primes = []
+    allNumbers = [True for x in range(2, limit)]
+    
+    for x in range(2, int(math.sqrt(limit))):
+        if allNumbers[x - 2] == True:
+            for y in range(x**2, limit, x):
+                allNumbers[y - 2] = False
 
-    for x in range(2, limit):
-        if (isPrime(x)):
-            primes.append(x)
-
-    return primes
-
-print(sum(getPrimesBelowLimit(2000000)))
+    for i in range(len(allNumbers)):
+        if allNumbers[i]:
+            yield i + 2
+            
+print(sum(getPrimesUpto(2000000)))
