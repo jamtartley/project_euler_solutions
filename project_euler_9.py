@@ -10,19 +10,14 @@ There exists exactly one Pythagorean triplet for which a + b + c = 1000.
 Find the product abc.
 """
 
-def getCorrectTripleProductForTotal(total):
+import math
 
-    current = 1
+def main():
+    for a in range(1000):
+        for b in range(a):
+            c = math.sqrt(a**2 + b**2)
+            if c == int(c) and a + b + c == 1000:
+                print(a * b * int(c))
+                return
 
-    while(True):  
-        for a in range(current):
-            for b in range(current):
-                for c in range(current):
-                    if ((a*a) + (b*b) == (c*c)):
-                        if (a+b+c == total):
-                            return a*b*c
-
-
-        current += 1
-
-print(getCorrectTripleProductForTotal(234))
+main()
