@@ -7,48 +7,44 @@ There are thirteen such primes below 100: 2, 3, 5, 7, 11, 13, 17, 31, 37, 71, 73
 
 How many circular primes are there below one million?
 """
-import itertools
-from functools import reduce
+
+import math
 
 def isPrime(number):
     """
     Check if the given number is prime
     """
-    for x in range(2, number):
+    for x in range(2, int(math.sqrt(number)) + 1):
         if (number % x == 0):
             return False
 
     return True
 
-def getSetOfPrimes(limit):
+def isCircularPrime(number):
     """
-    Generates the primes upto the given limit
+    Converts number into a string and tests each rotation of the string for primality
     """
-    primes = []
+    rotations = [str(number)]
+
+    for x in range(len(str(number)) - 1):
+        prev = rotations[len(rotations) - 1]
+        rotations.append(prev[1:len(prev)] + prev[0])
+
     
-    for x in range(2,limit):
-        if(isPrime(x)):
-            primes.append(x)
-        
-    return primes
+    for rotation in rotations:
+        if not isPrime(int(rotation.lstrip('0'))):
+            return False
 
-def getCircularPrimes():
-    primes = getSetOfPrimes(200)
-    circular = []
+    return True
 
-    for x in primes:
-        isCircular = True
-        """
-        MISUNDERSTOOD QUESTION, DOESN'T WANT ALL PERMUTATIONS, WANTS DIGITS ROTATIONS
-        """
-        for y in itertools.permutations([int(i) for i in str(x)]):
-            if not isPrime(int(reduce(lambda a,b : a+str(b), y, ''))):
-                isCircular = False
-        if isCircular:
-            circular.append(x)
 
-    return circular
-            
+def main():
+    circulars = 0
 
-for x in getCircularPrimes():
-    print(x)
+    for x in range(2, 1000000):
+        if isCircularPrime(x):
+            circulars += 1
+
+    print(circulars)
+
+main()
