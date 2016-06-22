@@ -18,21 +18,18 @@ e.g. |11| = 11 and |−4| = 4
 Find the product of the coefficients, a and b, for the quadratic expression that produces the maximum number of primes for consecutive values of n, starting with n = 0.
 """
 import math
-
-def getPrimesUpto(limit):
+from time import time
+def isPrime(number):
     """
-    Uses Sieve of Eratosthenes
+    Checks primality of given number
     """
-    allNumbers = [True for x in range(2, limit)]
+    if number < 0:
+        return False
     
-    for x in range(2, int(math.sqrt(limit))):
-        if allNumbers[x - 2] == True:
-            for y in range(x**2, limit, x):
-                allNumbers[y - 2] = False
-
-    for i in range(len(allNumbers)):
-        if allNumbers[i]:
-            yield i + 2
+    for x in range(2, round(math.sqrt(number)) + 1):
+        if number % x == 0:
+            return False
+    return True
 
 def getValueFromFormula(n, a, b):
     """
@@ -41,15 +38,13 @@ def getValueFromFormula(n, a, b):
     return n**2 + n * a + b
 
 def main():
-    primes = list(getPrimesUpto(100000))
-    bPrimes = list(getPrimesUpto(1000))
     highestPrimeChain = -1
     highestCoeffProduct = -1
 
-    for a in range(-999, 1000):
-        for b in bPrimes:
+    for a in range(-999, 1000, 2):
+        for b in range(1, 1000, 2):
             n = 0
-            while getValueFromFormula(n, a, b) in primes:
+            while isPrime(getValueFromFormula(n, a, b)):
                 n += 1
 
             if n > highestPrimeChain:
@@ -57,5 +52,6 @@ def main():
                 highestCoeffProduct = a * b
 
     print(highestCoeffProduct)
-
+start= time()
 main()
+print(time()-start)
