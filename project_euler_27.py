@@ -18,7 +18,7 @@ e.g. |11| = 11 and |−4| = 4
 Find the product of the coefficients, a and b, for the quadratic expression that produces the maximum number of primes for consecutive values of n, starting with n = 0.
 """
 import math
-from time import time
+
 def isPrime(number):
     """
     Checks primality of given number
@@ -52,6 +52,5 @@ def main():
                 highestCoeffProduct = a * b
 
     print(highestCoeffProduct)
-start= time()
+    
 main()
-print(time()-start)
