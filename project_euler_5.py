@@ -6,21 +6,23 @@ Project Euler 5
 What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
 """
 
-def isDivisibleByAll(number, maxDivisor):
+def isDivisibleByAll(number):
     """
-    Checks if a number is divisible
+    Checks if a number is divisible by 1-20
     """    
-    for x in range(2,maxDivisor):
-        if (number % x != 0):
+    for x in range(2, 21):
+        if number % x != 0:
             return False
 
     return True
 
-x = 2520
+def main():
+    x = 2520
 
-while(not isDivisibleByAll(x, 21)):
-    #We already know the number has to be divisible by 2520 as it is given in the question, massive performance increase
-    x += 2520
+    while not isDivisibleByAll(x):
+        x += 2520
 
-print(x)
+    print(x)
+
+main()
     
