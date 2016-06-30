@@ -6,12 +6,6 @@ A palindromic number reads the same both ways. The largest palindrome made from 
 Find the largest palindrome made from the product of two 3-digit numbers.
 """
 
-def splitNumberIntoList(number):
-    """
-    Splits a number into a list of digits
-    """
-    return [int(i) for i in str(number)]
-
 def isPalindrome(number):
     """
     Checks to see if a number is a palindrome.
