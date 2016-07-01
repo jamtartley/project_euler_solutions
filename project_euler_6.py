@@ -16,15 +16,13 @@ def getSquareOfSum(limit):
     """
     Calculates the square of the sum of integers upto limit
     """
-    numberList = [int(i) for i in range(limit + 1)] 
-    return sum(numberList) * sum(numberList)
+    return sum(range(1, limit + 1)) ** 2
 
 def getSumOfSquares(limit):
     """
     Calculates the sum of the squares of integers upto limit
     """
-    return sum([int(i) * i for i in range(limit + 1)] )
+    return sum([i*i for i in range(limit + 1)] )
 
-limit = 100
-print(getSquareOfSum(limit) - getSumOfSquares(limit))
+print(getSquareOfSum(100) - getSumOfSquares(100))
 
